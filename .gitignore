@@ -1,0 +1,12 @@
+# Executables
+*.out
+so_long
+
+# Object Files
+*.o
+
+# Debugging Files
+*.dSYM
+
+# Mac
+*.DS_Store*
