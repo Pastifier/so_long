@@ -10,3 +10,6 @@ so_long
 
 # Mac
 *.DS_Store*
+
+# VSCode
+*.vscode/**
