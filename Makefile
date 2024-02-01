@@ -24,27 +24,27 @@ endif
 # PROJECT
 NAME := so_long
 
-SRC := main.c
+SRC := main.c check.c wrappers.c init.c
 SRC_DIR := srcs
-SRCS := $(addprefix srcs/, $(SRC))
+SRCS := $(addprefix $(SRC_DIR)/, $(SRC))
 
-INC := so_long.h
+INC := so_long.h log.h
 INC_DIR := includes
 INCLUDE := $(addprefix $(INC_DIR)/, $(INC))
 
 all: $(NAME)
 
 $(NAME): $(SRCS) $(INCLUDE)
-	make -C $(BUILD_DIR)
+	@make -C $(BUILD_DIR)
 	make -C libft 
 	$(CC) -o $(NAME) -I$(INC_DIR) $(SRCS) $(CFLAGS)  
 
 clean:
-	make -C $(BUILD_DIR) clean
+	@make -C $(BUILD_DIR) clean
 	make -C libft clean
 
 fclean:
-	make -C $(BUILD_DIR) clean
+	@make -C $(BUILD_DIR) clean
 	rm -rf $(BUILD_DIR)/lib$(MLX).a
 	make -C libft fclean
 	rm -rf $(NAME)

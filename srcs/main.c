@@ -10,14 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "mlx.h"
+#include "so_long.h"
 
-int main(void)
+int	close_boi(t_game *game)
 {
-    void *mlx_ptr = mlx_init();
-    void *mlx_win = mlx_new_window(mlx_ptr, 600, 600, "Hello, world!");
-    mlx_loop(mlx_ptr);
-    (void)mlx_win;
-    return (0);
+	mlx_destroy_window(game->mlx_ptr, game->window);
+	free(game->mlx_ptr);
+	if (game->error)
+		return (game->error);
+	return (wexit("See you next time!", EXIT_SUCCESS), EXIT_SUCCESS);
+}
+
+int	main(int c, char *v[])
+{
+	static t_game	game;
+
+	init_game(c, v, &game);
+	mlx_loop(game.mlx_ptr);
+	return (0);
 }
