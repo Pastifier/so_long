@@ -13,3 +13,6 @@ so_long
 
 # VSCode
 *.vscode/**
+
+# Libraries
+*.a
