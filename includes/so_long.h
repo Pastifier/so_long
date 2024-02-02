@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/01 06:32:02 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/03 01:01:41 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_map
 typedef struct s_game
 {
 	void	*mlx_ptr;
-	void	*window;
+	void	*win;
 	int		error;
 	t_map	map;
 }	t_game;
@@ -59,16 +59,18 @@ typedef struct s_game
 /*--- VALIDATE ---*/
 // If you can't tell what this does by its name,
 // I honestly can't help you...
-int	validate_args_get_map_fd(int c, char *v[]);
+int		validate_args_get_map_fd(int c, char *v[]);
 
 /*--- INIT ---*/
 void	init_game(int argc, char **argv, t_game *game);
 
-/*--- WRAPPERS ---*/
+/*--- WRAPPERS & UTILS ---*/
 // Wrapper-function for `exit(2)` with custom functionality.
 // @param msg: What you want to output to `STD{OUT/ERR}`
 // @param exit_code: Self-explanatory. Note that
 // any error-code other than `EXIT_SUCCESS` will be considered
 // an error, and the message will be displayed in red.
 void	wexit(const char *msg, int exit_code);
+void	free_chr2d(char **arr);
+char	**dstr_realloc2d(char **ptr, size_t nmemb);
 #endif // !SO_LONG_H

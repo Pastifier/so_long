@@ -24,7 +24,7 @@ endif
 # PROJECT
 NAME := so_long
 
-SRC := main.c check.c wrappers.c init.c
+SRC := main.c check.c wrappers.c init.c utils.c
 SRC_DIR := srcs
 SRCS := $(addprefix $(SRC_DIR)/, $(SRC))
 

@@ -14,8 +14,9 @@
 
 int	close_boi(t_game *game)
 {
-	mlx_destroy_window(game->mlx_ptr, game->window);
+	mlx_destroy_window(game->mlx_ptr, game->win);
 	free(game->mlx_ptr);
+	free_chr2d(game->map.arr);
 	if (game->error)
 		return (game->error);
 	return (wexit("See you next time!", EXIT_SUCCESS), EXIT_SUCCESS);
