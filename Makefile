@@ -12,7 +12,7 @@ Lin = Linux
 ifeq (${OS}, ${Dar})
 	BUILD_DIR := minilibx_opengl_20191021
 	MLX := mlx
-	CFLAGS += -I$(BUILD_DIR) -framework OpenGL -framework Appkit
+	CFLAGS += -L$(BUILD_DIR) -I$(BUILD_DIR) -l$(MLX) -framework OpenGL -framework Appkit -Llibft -Ilibft/includes -lft
 else ifeq (${OS}, ${Lin})
 	BUILD_DIR := mlx_linux
 	MLX := mlx_Linux
@@ -31,7 +31,6 @@ SRCS := $(addprefix $(SRC_DIR)/, $(SRC))
 INC := so_long.h log.h
 INC_DIR := includes
 INCLUDE := $(addprefix $(INC_DIR)/, $(INC))
-
 all: $(NAME)
 
 $(NAME): $(SRCS) $(INCLUDE)
