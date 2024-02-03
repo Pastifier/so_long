@@ -6,12 +6,11 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 22:22:29 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/01 04:50:39 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/03 02:47:43 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "log.h"
-#include "libft.h"
+#include "so_long.h"
 
 void	wexit(const char *msg, int exit_code)
 {
