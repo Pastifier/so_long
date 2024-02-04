@@ -6,13 +6,15 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:07:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/03 01:15:46 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:47:56 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 int				close_boi(t_game *game);
+static void		validate_line_part1(t_gnl *line, char **self, size_t *prevlen);
+static char		**check_while_loading(int fd, size_t *capacity);
 static char		**load_map(int fd);
 static t_map	init_map(int fd);
 
@@ -39,29 +41,52 @@ t_map	init_map(int fd)
 
 char	**load_map(int fd)
 {
-	t_gnl	line;
 	char	**self;
 	size_t	capacity;
-	size_t	i;
 
-	capacity = 6;
-	self = ft_calloc(capacity, sizeof(*self));
+	capacity = 4;
+	self = check_while_loading(fd, &capacity);
+	return (self);
+}
+
+char	**check_while_loading(int fd, size_t *capacity)
+{
+	t_gnl	line;
+	size_t	i;
+	size_t	prevlen;
+	char	**self;
+
+	self = ft_calloc(*capacity + 1, sizeof(*self));
 	if (!self)
-		return (NULL);
+		return (wexit(ERR"Couldn't load map.", EXIT_FAILURE), NULL);
 	line = get_next_line(fd);
 	if (!line.line)
-		return (free(self),
-			wexit(ERR"The file seems to be empty.", EXIT_FAILURE), NULL);
+		return (wexit(ERR"The file seems to be empty.", EXIT_FAILURE), NULL);
 	i = 0;
 	while (line.line)
 	{
+		prevlen = line.len;
 		self[i++] = line.line;
-		if (i >= capacity)
-			self = dstr_realloc2d(self, capacity *= 2);
+		if (i >= *capacity)
+		{
+			self = dstr_realloc2d(self, (*capacity *= 2, *capacity));
+			if (!self)
+				return (wexit(ERR"Couldn't load map.", EXIT_FAILURE), NULL);
+		}
 		line = get_next_line(fd);
-		if (line.error)
-			return (free_chr2d(self),
-				wexit(ERR"Couldn't read from file!", EXIT_FAILURE), NULL);
+		validate_line_part1(&line, self, &prevlen);
 	}
 	return (self);
+}
+
+void	validate_line_part1(t_gnl *line, char **self, size_t *prevlen)
+{
+	if (!line)
+		return ;
+	if (line->error)
+		return (free_chr2d(self),
+			wexit(ERR "Couldn't read from file!", EXIT_FAILURE));
+	if (line->line && line->len != *prevlen)
+		return (free_chr2d(self),
+			wexit(ERR "Map is not rectangular!", EXIT_FAILURE));
 }
