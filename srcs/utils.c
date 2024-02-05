@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:49:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/04 03:16:47 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/05 11:55:05 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,21 @@ char	**dstr_realloc2d(char **ptr, size_t nmemb)
 		self[i] = ptr[i];
 	free(ptr);
 	return (self);
+}
+
+int	get_input(int keycode, t_game *game)
+{
+	if (keycode == KEY_ESC)
+		return (clean_resources(game));
+	return (0);
+}
+
+int	clean_resources(t_game *game)
+{
+	mlx_destroy_window(game->mlx_ptr, game->win);
+	free(game->mlx_ptr);
+	free_chr2d(game->map.arr);
+	if (game->error)
+		return (game->error);
+	return (wexit("See you next time!", EXIT_SUCCESS), EXIT_SUCCESS);
 }

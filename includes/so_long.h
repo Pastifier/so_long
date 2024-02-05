@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/03 01:01:41 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/05 11:54:36 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,32 @@
 
 # define WIN_HEIGHT 960
 # define WIN_WIDTH 1440
+
+# ifdef __linux__
+
+enum e_keycodes
+{
+	KEY_ESC = 9,
+	KEY_A = 61,
+	KEY_D = 64,
+	KEY_S = 73,
+	KEY_W = 77
+};
+# endif // !__linux__
+
+# ifdef __MACH__
+# endif // !__MACH__
+
+enum e_events
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP,
+	ON_MOUSEDOWN,
+	ON_MOUSEUP,
+	ON_MOUSEMOVE,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
 
 /*--- STRUCTS ---*/
 
@@ -43,7 +69,7 @@ typedef struct s_map
 {
 	int		fd;
 	char	**arr;
-	short	error;
+	bool	error;
 	size_t	height;
 	size_t	width;
 }	t_map;
@@ -73,4 +99,7 @@ void	init_game(int argc, char **argv, t_game *game);
 void	wexit(const char *msg, int exit_code);
 void	free_chr2d(char **arr);
 char	**dstr_realloc2d(char **ptr, size_t nmemb);
-#endif // !SO_LONG_H
+bool	check_map_line_layout(char **lines, t_vector point, bool at_last);
+int		get_input(int keycode, t_game *game);
+int		clean_resources(t_game *game);
+# endif // !SO_LONG_H

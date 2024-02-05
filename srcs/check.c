@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 09:03:56 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/03 01:03:25 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/05 10:05:09 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ bool	check_map_line_layout(char **lines, t_vector point, bool at_last)
 	if ((point.y == 0 || (lines[point.y] + 1) == NULL)
 		&& lines[point.y][point.x] == '1')
 		return (true);
-	else if ((lines[point.y][0] == '1'
-		|| (at_last && lines[point.y][point.x] == '1')))
-		return (true);
-	return (false);
+	else if ((lines[point.y][0] != '1'
+		|| (at_last && lines[point.y][point.x] != '1')))
+		return (false);
+	return (true);
 }
 
 int	validate_args_get_map_fd(int c, char *v[])
