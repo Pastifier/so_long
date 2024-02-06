@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 09:34:11 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:16:54 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ enum e_keycodes
 # endif // !__linux__
 
 # ifdef __MACH__
+
 enum e_keycodes
 {
 	KEY_SPACE = 49,
@@ -112,4 +113,4 @@ char	**dstr_realloc2d(char **ptr, size_t nmemb);
 bool	check_map_line_layout(char **lines, t_vector point, bool at_last);
 int		get_input(int keycode, t_game *game);
 int		clean_resources(t_game *game);
-# endif // !SO_LONG_H
+#endif // !SO_LONG_H
