@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/05 11:54:36 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 09:34:11 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,25 @@
 
 enum e_keycodes
 {
-	KEY_ESC = 9,
-	KEY_A = 61,
-	KEY_D = 64,
-	KEY_S = 73,
-	KEY_W = 77
+	KEY_SPACE = 32,
+	KEY_ESC = 65307,
+	KEY_LEFT = 65361,
+	KEY_UP,
+	KEY_RIGHT,
+	KEY_DOWN
 };
 # endif // !__linux__
 
 # ifdef __MACH__
+enum e_keycodes
+{
+	KEY_SPACE = 49,
+	KEY_ESC = 53,
+	KEY_LEFT = 123,
+	KEY_RIGHT,
+	KEY_DOWN,
+	KEY_UP
+};
 # endif // !__MACH__
 
 enum e_events
