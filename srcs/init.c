@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:07:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/05 11:55:50 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:03:18 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,15 @@ t_map	init_map(int fd)
 	if (!self.arr)
 		return (self.error = true, self);
 	point.y = -1;
-	(void)point;
-	// while (self.arr[++point.y])
-	// {
-	// 	point.x = -1;
-	// 	while (self.arr[point.y][++point.x])
-	// 		if (!check_map_line_layout(self.arr,
-	// 				point, (!self.arr[point.y][point.x + 1])))
-	// 			return (free_chr2d(self.arr),
-	// 				wexit(ERR"INVALID MAP!", EXIT_FAILURE), self);
-	// }
+	 while (self.arr[++point.y])
+	 {
+	 	point.x = -1;
+	 	while (self.arr[point.y][++point.x])
+	 		if (!check_map_line_layout(self.arr,
+	 				point, (!self.arr[point.y][point.x + 1])))
+	 			return (free_chr2d(self.arr),
+	 				wexit(ERR"INVALID MAP!", EXIT_FAILURE), self);
+	 }
 	return (self);
 }
 

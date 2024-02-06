@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 09:03:56 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/05 10:05:09 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:02:54 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // Returns true if the map file-extension is valid
 // @param file: The provided file
 static void	check_map_extension(const char *file);
+static bool	check_valid_field_char(char c);
 
 // Implement a function that checks for a valid map-layout.
 bool	check_map_line_layout(char **lines, t_vector point, bool at_last)
@@ -29,6 +30,9 @@ bool	check_map_line_layout(char **lines, t_vector point, bool at_last)
 		return (true);
 	else if ((lines[point.y][0] != '1'
 		|| (at_last && lines[point.y][point.x] != '1')))
+		return (false);
+	else if (point.x != 0 && !at_last
+		&& !check_valid_field_char(lines[point.y][point.x]))
 		return (false);
 	return (true);
 }
@@ -59,4 +63,9 @@ void	check_map_extension(const char *file)
 	nlt_addr = ft_strchr(dot_addr, 0);
 	if (ft_strncmp(".ber", dot_addr, (size_t)(nlt_addr - dot_addr + 1)))
 		wexit(ERR"Wrong extension. "INVALID_EXTENSION, EXIT_FAILURE);
+}
+
+bool	check_valid_field_char(char c)
+{
+	return (c == '0' || c == 'P' || c == 'E');
 }
