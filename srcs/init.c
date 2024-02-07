@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:07:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 11:15:16 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:13:34 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ t_map	init_map(int fd)
 	if (!self.arr)
 		return (self.error = true, self);
 	point.y = -1;
+	// (void)point;
 	while (self.arr[++point.y])
 	{
 		point.x = -1;
-		while (self.arr[point.y][++point.x])
+		while (self.arr[point.y][++point.x]
+			&& self.arr[point.y][point.x] != '\n')
 			if (!check_map_line_layout(self.arr,
-					point, (!self.arr[point.y][point.x + 1])))
+					point, (!self.arr[point.y][point.x + 1]
+					|| self.arr[point.y][point.x + 1] == '\n')))
 				return (free_chr2d(self.arr),
 					wexit(ERR"INVALID MAP!", EXIT_FAILURE), self);
 	}

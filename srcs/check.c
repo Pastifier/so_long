@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 09:03:56 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 11:15:34 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 13:13:07 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	check_map_line_layout(char **lines, t_vector point, bool at_last)
 {
 	if (!lines[point.y])
 		return (false);
-	if ((point.y == 0 || (lines[point.y] + 1) == NULL)
+	if ((point.y == 0 || (lines[point.y + 1]) == NULL)
 		&& lines[point.y][point.x] == '1')
 		return (true);
 	else if ((lines[point.y][0] != '1'

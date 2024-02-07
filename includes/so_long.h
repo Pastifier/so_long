@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebinjama <ebinjama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 11:16:54 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:01:55 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 enum e_keycodes
 {
 	KEY_SPACE = 32,
-	KEY_ESC = 65307,
+	KEY_ESC = 0xFF1B,
 	KEY_LEFT = 65361,
 	KEY_UP,
 	KEY_RIGHT,

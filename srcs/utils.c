@@ -6,11 +6,12 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:49:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/05 11:55:05 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:18:15 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 void	free_chr2d(char **arr)
 {
@@ -45,8 +46,10 @@ char	**dstr_realloc2d(char **ptr, size_t nmemb)
 
 int	get_input(int keycode, t_game *game)
 {
+	printf("(%d)\n", keycode);
 	if (keycode == KEY_ESC)
 		return (clean_resources(game));
+	ft_putnbr_fd(keycode, STDOUT_FILENO);
 	return (0);
 }
 
