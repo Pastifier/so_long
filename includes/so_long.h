@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 23:28:50 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 12:01:55 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/08 11:08:56 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # ifdef __linux__
 
-enum e_keycodes
+enum e_keysyms
 {
 	KEY_SPACE = 32,
 	KEY_ESC = 0xFF1B,
@@ -37,7 +37,7 @@ enum e_keycodes
 
 # ifdef __MACH__
 
-enum e_keycodes
+enum e_keysyms
 {
 	KEY_SPACE = 49,
 	KEY_ESC = 53,

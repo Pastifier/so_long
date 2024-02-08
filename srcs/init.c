@@ -6,7 +6,7 @@
 /*   By: ebinjama <ebinjama@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:07:03 by ebinjama          #+#    #+#             */
-/*   Updated: 2024/02/06 12:13:34 by ebinjama         ###   ########.fr       */
+/*   Updated: 2024/02/08 11:07:24 by ebinjama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_game(int argc, char **argv, t_game *game)
 	game->mlx_ptr = mlx_init();
 	game->win = mlx_new_window(game->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "so_long");
 	mlx_hook(game->win, ON_DESTROY, 0, clean_resources, game);
-	mlx_hook(game->win, ON_KEYDOWN, 0, get_input, game);
+	mlx_key_hook(game->win, get_input, game);
 }
 
 t_map	init_map(int fd)
